@@ -10660,9 +10660,19 @@ DictionaryLoader.prototype.load = function (load_callback) {
     var dic_path = this.dic_path;
     var loadArrayBuffer = this.loadArrayBuffer;
     var dic_path_url = function (filename) {
-        var separator = '/';
-        var replace = new RegExp(separator+'{1,}', 'g');
-        var path = [dic_path, filename].join(separator).replace(replace, separator);
+        // var separator = '/';
+        // var replace = new RegExp(separator+'{1,}', 'g');
+        // var path = [dic_path, filename].join(separator).replace(replace, separator);
+        let query_str = "";
+        const index_question_mark = dic_path.indexOf("?");
+        if (index_question_mark !== -1) {
+            query_str = dic_path.substring(index_question_mark);
+            dic_path = dic_path.substring(0, index_question_mark);
+        }
+        if (dic_path.endsWith("/")) {
+            dic_path = dic_path.substring(0, dic_path.length - 1);
+        }
+        var path = dic_path + "/" + filename + query_str;
 
         return path;
     }
