@@ -1,5 +1,5 @@
 {
-  "name": "@sglkc/kuromoji",
+  "name": "kuromoji",
   "description": "Forked version of kuromoji with better compatibility for browsers",
   "version": "1.1.0",
   "author": "sglkc",
